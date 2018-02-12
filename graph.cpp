@@ -199,7 +199,7 @@ void Graph::djikstraCostToAllVertices(
 	int v2ucost = 0;
 
 	
-	std::queue<int, std::string> pq;
+	std::priority_queue<std::pair<int, std::string>,std::queue<std::pair<int,std::string>>, std::less<int>> pq;
 	std::set<std::string> vertexSet;
 	
 	for (int i = 0; i < numOfNeighbors; i++)
@@ -212,7 +212,7 @@ void Graph::djikstraCostToAllVertices(
 	vertexSet.insert((vertices.at(startLabel)->getLabel()));
 	while (!pq.empty())
 	{
-		v = pq.front()->second;// lowest cost, first in priority queue
+		v = pq.top().second;// lowest cost, first in priority queue
 		pq.pop();
 		if (vertexSet.find(startLabel) != vertexSet.end())
 		{
