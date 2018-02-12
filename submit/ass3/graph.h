@@ -79,8 +79,6 @@ private:
 	/** mapping from vertex label to vertex pointer for quick access */
 	std::map<std::string, Vertex*> vertices;
 
-	std::string findUnvisitedNeighbor(std::string startVertex);
-
 	/** helper for depthFirstTraversal */
 	void depthFirstTraversalHelper(Vertex* startVertex,
 		void visit(const std::string&));

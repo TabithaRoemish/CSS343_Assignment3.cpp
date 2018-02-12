@@ -128,8 +128,7 @@ void Graph::depthFirstTraversal(std::string startLabel,
 
 	while (!mystack.empty())
 	{
-		//find unvisited neighbor
-		current = findUnvisitedNeighbor(mystack.top().getLabel());
+		current = mystack.top().getNextNeighbor();
 		
 		if (!(vertices.at(current)->isVisited()))
 		{
@@ -142,20 +141,7 @@ void Graph::depthFirstTraversal(std::string startLabel,
 	}
 	
 }                        
-std::string Graph::findUnvisitedNeighbor(std::string startVertex)
-{
-	std::string unvisitedneighbor = vertices.at(startVertex)->getNextNeighbor();
-	int neighbors = vertices.at(startVertex)->getNumberOfNeighbors();
-	for (int i = 0; i < neighbors; i++)
-	{
-		if (!(vertices.at(unvisitedneighbor)->isVisited()))
-			break;
-		else
-			unvisitedneighbor = vertices.at(startVertex)->getNextNeighbor();
-			
-	}
-	return unvisitedneighbor;
-}
+
 /** breadth-first traversal starting from startLabel
 call the function visit on each vertex label */
 void Graph::breadthFirstTraversal(std::string startLabel,      
@@ -164,13 +150,13 @@ void Graph::breadthFirstTraversal(std::string startLabel,
 	std::queue<Vertex> myqueue;
 	std::string neighbor;
 	std::string currentVertex = startLabel;
-	int size = 0;
-
 	this->unvisitVertices();
 	myqueue.push(*(vertices.at(startLabel)));
 	vertices.at(startLabel)->visit();
 	visit(startLabel);
+	int size = 0;
 	
+
 	while (!myqueue.empty())
 	{
 		currentVertex = myqueue.front().getLabel();
@@ -184,6 +170,7 @@ void Graph::breadthFirstTraversal(std::string startLabel,
 				visit(neighbor);
 				vertices.at(neighbor)->visit();
 				myqueue.push(*(vertices.at(neighbor)));
+				neighbor = vertices.at(currentVertex)->getNextNeighbor();
 			}
 		}	
 	}
@@ -233,7 +220,6 @@ void Graph::djikstraCostToAllVertices(
 	while (!pq.empty())
 	{
 		v = pq.top().second;// lowest cost, first in priority queue
-		vertexSet.insert((vertices.at(v)->getLabel()));
 		pq.pop();
 		if (vertexSet.find(v) != vertexSet.end())
 		{
