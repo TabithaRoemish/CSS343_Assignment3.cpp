@@ -1,3 +1,30 @@
 ﻿  graph.cpp
-  ass3.vcxproj -> E:\CSS 343\Assignment 3\ass3\Debug\ass3.exe
-  ass3.vcxproj -> E:\CSS 343\Assignment 3\ass3\Debug\ass3.pdb (Partial PDB)
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\queue(24): error C2039: 'value_type': is not a member of 'std::less<int>'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xutility(2977): note: see declaration of 'std::less<int>'
+  e:\css 343\assignment 3\ass3\ass3\graph.cpp(202): note: see reference to class template instantiation 'std::queue<std::pair<int,std::string>,std::less<int>>' being compiled
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\queue(24): error C3646: 'value_type': unknown override specifier
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\queue(24): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\queue(25): error C2039: 'size_type': is not a member of 'std::less<int>'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xutility(2977): note: see declaration of 'std::less<int>'
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\queue(25): error C3646: 'size_type': unknown override specifier
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\queue(25): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\queue(26): error C2039: 'reference': is not a member of 'std::less<int>'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xutility(2977): note: see declaration of 'std::less<int>'
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\queue(26): error C3646: 'reference': unknown override specifier
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\queue(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\queue(27): error C2039: 'const_reference': is not a member of 'std::less<int>'
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\xutility(2977): note: see declaration of 'std::less<int>'
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\queue(27): error C3646: 'const_reference': unknown override specifier
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\queue(27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.11.25503\include\queue(29): error C2338: container adaptors require consistent types
+e:\css 343\assignment 3\ass3\ass3\graph.cpp(210): error C2664: 'void std::queue<std::pair<int,std::string>,std::less<int>>::push(const int &)': cannot convert argument 1 from 'std::pair<int,std::string>' to 'int &&'
+  e:\css 343\assignment 3\ass3\ass3\graph.cpp(210): note: Reason: cannot convert from 'std::pair<int,std::string>' to 'int'
+  e:\css 343\assignment 3\ass3\ass3\graph.cpp(210): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+e:\css 343\assignment 3\ass3\ass3\graph.cpp(215): error C2227: left of '->second' must point to class/struct/union/generic type
+  e:\css 343\assignment 3\ass3\ass3\graph.cpp(215): note: type is 'int'
+e:\css 343\assignment 3\ass3\ass3\graph.cpp(228): error C2664: 'void std::queue<std::pair<int,std::string>,std::less<int>>::push(const int &)': cannot convert argument 1 from 'std::pair<int,std::string>' to 'int &&'
+  e:\css 343\assignment 3\ass3\ass3\graph.cpp(228): note: Reason: cannot convert from 'std::pair<int,std::string>' to 'int'
+  e:\css 343\assignment 3\ass3\ass3\graph.cpp(228): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+e:\css 343\assignment 3\ass3\ass3\graph.cpp(236): error C2664: 'void std::queue<std::pair<int,std::string>,std::less<int>>::push(const int &)': cannot convert argument 1 from 'std::pair<int,std::string>' to 'int &&'
+  e:\css 343\assignment 3\ass3\ass3\graph.cpp(236): note: Reason: cannot convert from 'std::pair<int,std::string>' to 'int'
+  e:\css 343\assignment 3\ass3\ass3\graph.cpp(236): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
