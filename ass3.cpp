@@ -116,6 +116,7 @@ void testGraph0() {
 }
 
 void testGraph1() {
+	cout << endl;
 	cout << "testGraph1" << endl;
 	Graph g;
 	g.readFile("graph1.txt");
@@ -142,8 +143,9 @@ void testGraph1() {
 }
 
 void testGraph2() {
+	cout << endl;
+	cout << "testGraph2" << endl;
 	Graph g;
-
 	g.readFile("graph2.txt");
 	cout << isOK(g.getNumVertices(), 21) << "21 vertices" << endl;
 	cout << isOK(g.getNumEdges(), 24) << "24 edges" << endl;
@@ -186,9 +188,70 @@ void testGraph2() {
 		<< "Djisktra O" << endl;
 }
 
+void testGraph3()
+{
+	cout << endl;
+	cout << "testGraph3" << endl;
+	Graph g;
+	g.add("A", "B", 5);
+	g.add("B", "C", 6);
+	g.add("A", "C", 3);
+	g.add("C", "D", 8);
+	g.add("C", "E", 1);
+
+	graphOut.str("");
+	g.depthFirstTraversal("A", graphVisitor);
+	cout << isOK(graphOut.str(), "A B C D E "s)
+		<< "DFS from A" << endl;
+
+	graphOut.str("");
+	g.breadthFirstTraversal("A", graphVisitor);
+	cout << isOK(graphOut.str(), "A B C D E "s)
+		<< "BFS from A" << endl;
+
+	g.djikstraCostToAllVertices("A", weight, previous);
+	graphCostDisplay();
+	cout << isOK(graphOut.str(),
+		"B(5) C(3) D(11) via [C] E(4) via [C] "s)
+		<< "Djisktra" << endl;
+	
+	g.add("B", "D", 1);
+	g.add("B", "X", 2);
+
+	graphOut.str("");
+	g.depthFirstTraversal("A", graphVisitor);
+	cout << isOK(graphOut.str(), "A B C D E X "s)
+		<< "DFS from A" << endl;
+
+	graphOut.str("");
+	g.breadthFirstTraversal("A", graphVisitor);
+	cout << isOK(graphOut.str(), "A B C D X E "s)
+		<< "BFS from A" << endl;
+
+	g.djikstraCostToAllVertices("A", weight, previous);
+	graphCostDisplay();
+	cout << isOK(graphOut.str(),
+		"B(5) C(3) D(6) via [B] E(4) via [C] X(7) via [B] "s)
+		<< "Djisktra" << endl;
+
+	g.removeEdge("A", "B");
+
+	graphOut.str("");
+	g.depthFirstTraversal("A", graphVisitor);
+	cout << isOK(graphOut.str(), "A C D E "s)
+		<< "DFS from A" << endl;
+
+	graphOut.str("");
+	g.breadthFirstTraversal("A", graphVisitor);
+	cout << isOK(graphOut.str(), "A C D E "s)
+		<< "BFS from A" << endl;
+
+}
+
 int main() {
 	testGraph0();
 	testGraph1();
 	testGraph2();
+	testGraph3();
 	return 0;
 }

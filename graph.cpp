@@ -34,8 +34,14 @@ only vertices stored in map
 no pointers to edges created by graph */
 Graph::~Graph() 
 { 
-	// go through graph verticies, disconnect edges
-}																	//<-----------------------Still need to do
+	// go through graph verticies and delete
+	for (std::map<std::string, Vertex*>::iterator it = vertices.begin(),
+		it_end = vertices.end(); it != it_end; it++)
+	{
+		delete it->second;
+	}
+	
+}																	
 
 /** return number of vertices */
 int Graph::getNumVertices() const { return numberOfVertices; }
@@ -50,7 +56,7 @@ a vertex cannot connect to itself
 or have multiple edges to another vertex */
 bool Graph::add(std::string start, std::string end, int edgeWeight) 
 { 
-	
+	findOrCreateVertex(end);
 	Vertex * temp = findOrCreateVertex(start);
 	
 	
@@ -78,7 +84,6 @@ fromVertex  toVertex    edgeWeight */
 void Graph::readFile(std::string filename) 
 {
 	std::ifstream toRead(filename);
-	int size = 0;
 	int weight = 0;
 	
 	std::string parse = " ";
@@ -95,8 +100,8 @@ void Graph::readFile(std::string filename)
 			ss << parse;
 			ss >> startVertex >> endVertex >> weight;
 
-			findOrCreateVertex(startVertex);
-			findOrCreateVertex(endVertex);
+			/*findOrCreateVertex(startVertex);
+			findOrCreateVertex(endVertex);*/
 			add(startVertex, endVertex, weight);
 
 			//reset
@@ -209,8 +214,9 @@ void Graph::djikstraCostToAllVertices(
 	int numOfNeighbors = vertices.at(startLabel)->getNumberOfNeighbors();
 	int vNeighbors = 0;
 	int v2ucost = 0;
+	weight.clear();
+	previous.clear();
 
-	
 	typedef std::pair<int, std::string> P;
 	struct Order
 	{
@@ -222,7 +228,7 @@ void Graph::djikstraCostToAllVertices(
 	std::priority_queue<P,std::deque<P>, Order> pq;
 	std::set<std::string> vertexSet;
 	
-	for (int i = 0; i < numOfNeighbors; i++)
+	for (int i = 0; i < numOfNeighbors; i++) // set initial weights
 	{
 		u = vertices.at(startLabel)->getNextNeighbor();
 		weight[u] = vertices.at(startLabel)->getEdgeWeight(u);
@@ -241,11 +247,16 @@ void Graph::djikstraCostToAllVertices(
 			u = vertices.at(v)->getNextNeighbor();
 			for (int k = 0; k < vNeighbors; k++)
 			{
+				if (vertexSet.count(u) > 0)
+				{
+					u = vertices.at(v)->getNextNeighbor();
+					continue;
+				}
 				v2ucost = vertices.at(v)->getEdgeWeight(u);
-				if (v2ucost == 0)
+				if (weight.find(u) == weight.end())
 				{
 					weight[u] = weight[v] + v2ucost;
-					previous[u] = u;
+					previous[u] = v;
 					pq.push(P(weight[u], u));
 				}
 				else
@@ -253,29 +264,26 @@ void Graph::djikstraCostToAllVertices(
 					if (weight[u] > (weight[v] + v2ucost))
 					{
 						weight[u] = weight[v] + v2ucost;
-						previous[u] = startLabel;
+						previous[u] = v;
 						pq.push(P(weight[u], u));
 					}
-					else
-						continue;
 				}
 				u = vertices.at(v)->getNextNeighbor();
 			}
 		}
 	}
-}															//<-----------------------Still need to do
+}															
 
-/** helper for depthFirstTraversal */
-void Graph::depthFirstTraversalHelper(Vertex* startVertex,  //not used
-	void visit(const std::string&)) 
-{
-	startVertex->visit();
+///** helper for depthFirstTraversal */
+//void Graph::depthFirstTraversalHelper(Vertex* startVertex,  //not used
+//	void visit(const std::string&)) 
+//{
+//
+//}
 
-}
-
-/** helper for breadthFirstTraversal */
-void Graph::breadthFirstTraversalHelper(Vertex*startVertex,  //not used
-	void visit(const std::string&)) {}
+///** helper for breadthFirstTraversal */
+//void Graph::breadthFirstTraversalHelper(Vertex*startVertex,  //not used
+//	void visit(const std::string&)) {}
 
 /** mark all verticies as unvisited */
 void Graph::unvisitVertices() 
@@ -305,7 +313,7 @@ Vertex* Graph::findOrCreateVertex(const std::string& vertexLabel)
 	if (findVertex(vertexLabel) == nullptr)
 	{
 		Vertex * newVertex = new Vertex(vertexLabel);
-		vertices.insert(std::pair<std::string, Vertex*>(vertexLabel, newVertex));
+		vertices[vertexLabel] = newVertex;
 		vertices.at(newVertex->getLabel())->resetNeighbor();
 		numberOfVertices++;
 		return newVertex;
@@ -314,4 +322,9 @@ Vertex* Graph::findOrCreateVertex(const std::string& vertexLabel)
 		return findVertex(vertexLabel);
 	
 }	
+
+bool Graph::removeEdge(std::string start, std::string end)
+{
+	return vertices.at(start)->disconnect(end);
+}
 

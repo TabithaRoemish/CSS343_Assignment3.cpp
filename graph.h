@@ -69,6 +69,9 @@ public:
 		std::map<std::string, int>& weight,
 		std::map<std::string, std::string>& previous);
 
+	//test disconnect
+	bool removeEdge(std::string start, std::string end);
+
 private:
 	/** number of vertices in graph */
 	int numberOfVertices;
@@ -81,13 +84,13 @@ private:
 
 	std::string findUnvisitedNeighbor(std::string startVertex);
 
-	/** helper for depthFirstTraversal */
-	void depthFirstTraversalHelper(Vertex* startVertex,
-		void visit(const std::string&));
+	///** helper for depthFirstTraversal */
+	//void depthFirstTraversalHelper(Vertex* startVertex,
+	//	void visit(const std::string&));
 
-	/** helper for breadthFirstTraversal */
-	void breadthFirstTraversalHelper(Vertex*startVertex,
-		void visit(const std::string&));
+	///** helper for breadthFirstTraversal */
+	//void breadthFirstTraversalHelper(Vertex*startVertex,
+	//	void visit(const std::string&));
 
 	/** mark all verticies as unvisited */
 	void unvisitVertices();

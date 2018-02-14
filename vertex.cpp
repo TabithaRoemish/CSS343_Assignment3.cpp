@@ -7,6 +7,10 @@
 #include <map>
 #include <string>
 
+//for testing
+#include <iostream>
+//-------
+
 #include "edge.h"
 
 
@@ -49,21 +53,21 @@ bool Vertex::connect(const std::string& endVertex, const int edgeWeight)
 		return false;
 	else
 	{
-		Edge * newEdge = new Edge(endVertex, edgeWeight);
-		adjacencyList.insert(std::pair<std::string,Edge>(endVertex, *newEdge));
+		Edge newEdge(endVertex, edgeWeight);
+		adjacencyList[endVertex] = newEdge;
 		currentNeighbor = adjacencyList.begin();
 		return true;
 	}
-
 }																			
 
 /** Removes the edge between this vertex and the given one.
 @return  True if the removal is successful. */
 bool Vertex::disconnect(const std::string& endVertex) 
 {
-	if (adjacencyList.find(endVertex) != adjacencyList.end())
+	std::map<std::string, Edge>::iterator ptr = adjacencyList.find(endVertex);
+	if (ptr != adjacencyList.end())
 	{
-		adjacencyList.erase(endVertex);
+		adjacencyList.erase(endVertex); // remove edge from list
 		return true;
 	}
 	else
