@@ -1,6 +1,6 @@
-Script started on Tue 13 Feb 2018 09:08:23 PM PST
-tabithar@uw1-320-02:~/Homework$ g++ -std=c++14 -g -Wall -Wextra vertex.cpp edge. cpp graph.cpp ass3.cpp -o ass3
-tabithar@uw1-320-02:~/Homework$ ./ass3
+Script started on Thu 15 Feb 2018 10:40:50 AM PST
+tabithar@uw1-320-15:~/Homework$ g++ -std=c++14 -g -Wall -Wextra vertex.cpp edge. cpp graph.cpp ass3.cpp -o ass3
+tabithar@uw1-320-15:~/Homework$ .a[K/ass3
 testGraph0
 OK: 3 vertices
 OK: 3 edges
@@ -27,20 +27,30 @@ OK: BFS from U
 OK: Djisktra O
 
 testGraph3
+OK: 5 vertices
+OK: 5 edges
 OK: DFS from A
 OK: BFS from A
 OK: Djisktra
+OK: 6 vertices
+OK: 7 edges
 OK: DFS from A
 OK: BFS from A
 OK: Djisktra
+OK: 6 vertices
+OK: 6 edges
 OK: DFS from A
 OK: BFS from A
-tabithar@uw1-320-02:~/Homework$ valgrind ./ass3
-==20418== Memcheck, a memory error detector
-==20418== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
-==20418== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
-==20418== Command: ./ass3
-==20418== 
+
+test4 - graph3.txt
+OK: 22 vertices
+OK: 26 edges
+tabithar@uw1-320-15:~/Homework$ valgrind ./ass3
+==3008== Memcheck, a memory error detector
+==3008== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==3008== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==3008== Command: ./ass3
+==3008== 
 testGraph0
 OK: 3 vertices
 OK: 3 edges
@@ -67,29 +77,39 @@ OK: BFS from U
 OK: Djisktra O
 
 testGraph3
+OK: 5 vertices
+OK: 5 edges
 OK: DFS from A
 OK: BFS from A
 OK: Djisktra
+OK: 6 vertices
+OK: 7 edges
 OK: DFS from A
 OK: BFS from A
 OK: Djisktra
+OK: 6 vertices
+OK: 6 edges
 OK: DFS from A
 OK: BFS from A
-==20418== 
-==20418== HEAP SUMMARY:
-==20418==     in use at exit: 72,704 bytes in 1 blocks
-==20418==   total heap usage: 468 allocs, 467 frees, 159,763 bytes allocated
-==20418== 
-==20418== LEAK SUMMARY:
-==20418==    definitely lost: 0 bytes in 0 blocks
-==20418==    indirectly lost: 0 bytes in 0 blocks
-==20418==      possibly lost: 0 bytes in 0 blocks
-==20418==    still reachable: 72,704 bytes in 1 blocks
-==20418==         suppressed: 0 bytes in 0 blocks
-==20418== Rerun with --leak-check=full to see details of leaked memory
-==20418== 
-==20418== For counts of detected and suppressed errors, rerun with: -v
-==20418== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-tabithar@uw1-320-02:~/Homework$ exit
 
-Script done on Tue 13 Feb 2018 09:08:51 PM PST
+test4 - graph3.txt
+OK: 22 vertices
+OK: 26 edges
+==3008== 
+==3008== HEAP SUMMARY:
+==3008==     in use at exit: 72,704 bytes in 1 blocks
+==3008==   total heap usage: 541 allocs, 540 frees, 175,420 bytes allocated
+==3008== 
+==3008== LEAK SUMMARY:
+==3008==    definitely lost: 0 bytes in 0 blocks
+==3008==    indirectly lost: 0 bytes in 0 blocks
+==3008==      possibly lost: 0 bytes in 0 blocks
+==3008==    still reachable: 72,704 bytes in 1 blocks
+==3008==         suppressed: 0 bytes in 0 blocks
+==3008== Rerun with --leak-check=full to see details of leaked memory
+==3008== 
+==3008== For counts of detected and suppressed errors, rerun with: -v
+==3008== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+tabithar@uw1-320-15:~/Homework$ exit
+
+Script done on Thu 15 Feb 2018 10:41:19 AM PST

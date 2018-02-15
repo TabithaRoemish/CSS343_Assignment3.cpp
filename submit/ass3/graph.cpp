@@ -29,7 +29,7 @@ Graph::Graph()
 {
 	numberOfEdges = 0;
 	numberOfVertices = 0;
-	vertices.clear(); //probably don't need
+	//vertices.clear(); //probably don't need
 }                                                         
 
 /** destructor, delete all vertices and edges
@@ -100,8 +100,6 @@ void Graph::readFile(std::string filename)
 			ss << parse;
 			ss >> startVertex >> endVertex >> weight;
 
-			/*findOrCreateVertex(startVertex);
-			findOrCreateVertex(endVertex);*/
 			add(startVertex, endVertex, weight);
 
 			//reset
@@ -147,6 +145,7 @@ void Graph::depthFirstTraversal(std::string startLabel,
 	}
 }    
 
+//if no unvisited neighbor, returns startVertex label
 std::string Graph::findUnvisitedNeighbor(std::string startVertex)
 {
     std::string unvisitedneighbor = 
@@ -322,6 +321,7 @@ Vertex* Graph::findOrCreateVertex(const std::string& vertexLabel)
  //public access method for disconnect
 bool Graph::removeEdge(std::string start, std::string end)
 {
+	numberOfEdges--;
 	return vertices.at(start)->disconnect(end);
 }
 

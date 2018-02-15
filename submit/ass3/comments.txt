@@ -1,4 +1,8 @@
 1. Hours: 10 hours
-2. Comments: Got a performance warning from Jolly Feedback,
+2. Comments: 
+	JollyFeedBack Issues: 1)In VS and Linux when I compile and read graph1 and graph 2 I get the correct number of vertices,
+in JollyFeedBack, in graph1 and graph2 it says I'm counting one more vertex than there is. I don't know why this was happening. 
+I reviewed my code, I'm only increasing vertex when I create a new one and everything else is working so I'm just going to submit as is. 
+2) I got a performance warning from Jolly Feedback,
 "Prefer prefix ++/-- operators for non-primitive types." I don't know what this means/don't know the alternative so
 I hope this doesn't count against efficiency. 

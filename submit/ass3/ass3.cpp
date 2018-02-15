@@ -199,11 +199,14 @@ void testGraph3()
 	g.add("C", "D", 8);
 	g.add("C", "E", 1);
 
+	cout << isOK(g.getNumVertices(), 5) << "5 vertices" << endl;
+	cout << isOK(g.getNumEdges(), 5) << "5 edges" << endl;
+
 	graphOut.str("");
 	g.depthFirstTraversal("A", graphVisitor);
 	cout << isOK(graphOut.str(), "A B C D E "s)
 		<< "DFS from A" << endl;
-
+	
 	graphOut.str("");
 	g.breadthFirstTraversal("A", graphVisitor);
 	cout << isOK(graphOut.str(), "A B C D E "s)
@@ -217,6 +220,9 @@ void testGraph3()
 	
 	g.add("B", "D", 1);
 	g.add("B", "X", 2);
+
+	cout << isOK(g.getNumVertices(), 6) << "6 vertices" << endl;
+	cout << isOK(g.getNumEdges(), 7) << "7 edges" << endl;
 
 	graphOut.str("");
 	g.depthFirstTraversal("A", graphVisitor);
@@ -236,6 +242,9 @@ void testGraph3()
 
 	g.removeEdge("A", "B");
 
+	cout << isOK(g.getNumVertices(), 6) << "6 vertices" << endl;
+	cout << isOK(g.getNumEdges(), 6) << "6 edges" << endl;
+
 	graphOut.str("");
 	g.depthFirstTraversal("A", graphVisitor);
 	cout << isOK(graphOut.str(), "A C D E "s)
@@ -248,10 +257,21 @@ void testGraph3()
 
 }
 
+void testGraph4()
+{
+	cout << endl;
+	cout << "test4 - graph3.txt" << endl;
+	Graph g;
+	g.readFile("graph3.txt");
+	cout << isOK(g.getNumVertices(), 22) << "22 vertices" << endl;
+	cout << isOK(g.getNumEdges(), 26) << "26 edges" << endl;
+
+}
 int main() {
 	testGraph0();
 	testGraph1();
 	testGraph2();
 	testGraph3();
+	testGraph4();
 	return 0;
 }

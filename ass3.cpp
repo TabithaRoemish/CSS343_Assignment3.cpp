@@ -257,10 +257,57 @@ void testGraph3()
 
 }
 
+void testGraph4()
+{
+	cout << endl;
+	cout << "test4 - graph3.txt" << endl;
+	Graph g;
+	g.readFile("graph3.txt");
+	cout << isOK(g.getNumVertices(), 22) << "22 vertices" << endl;
+	cout << isOK(g.getNumEdges(), 26) << "26 edges" << endl;
+
+}
+
+void testGraph5()
+{
+	cout << endl;
+	cout << "test5 - graph2.txt with add" << endl;
+	Graph g;
+	g.add("A", "B", 0);
+	g.add("A", "C", 0);
+	g.add("A", "D", 0);
+	g.add("B", "E", 0);
+	g.add("B", "F", 0);
+	g.add("C", "G", 0);
+	g.add("D", "H", 0);
+	g.add("D", "I", 0);
+	g.add("F", "J", 0);
+	g.add("G", "K", 0);
+	g.add("G", "L", 0);
+	g.add("H", "M", 0);
+	g.add("I", "M", 0);
+	g.add("I", "N", 0);
+	g.add("O", "P", 5);
+	g.add("O", "Q", 2);
+	g.add("P", "R", 2);
+	g.add("Q", "R", 1);
+	g.add("R", "O", 1);
+	g.add("R", "S", 3);
+	g.add("S", "R", 1);
+	g.add("S", "T", 2);
+	g.add("S", "U", 3);
+	g.add("T", "O", 8);
+	
+	cout << isOK(g.getNumVertices(), 21) << "21 vertices" << endl;
+	cout << isOK(g.getNumEdges(), 24) << "24 edges" << endl;
+
+}
 int main() {
 	testGraph0();
 	testGraph1();
 	testGraph2();
 	testGraph3();
+	testGraph4();
+	testGraph5();
 	return 0;
 }
