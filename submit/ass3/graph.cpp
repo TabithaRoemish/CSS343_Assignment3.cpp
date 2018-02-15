@@ -322,7 +322,6 @@ Vertex* Graph::findOrCreateVertex(const std::string& vertexLabel)
  //public access method for disconnect
 bool Graph::removeEdge(std::string start, std::string end)
 {
-	numberOfEdges--;
 	return vertices.at(start)->disconnect(end);
 }
 

@@ -199,14 +199,11 @@ void testGraph3()
 	g.add("C", "D", 8);
 	g.add("C", "E", 1);
 
-	cout << isOK(g.getNumVertices(), 5) << "5 vertices" << endl;
-	cout << isOK(g.getNumEdges(), 5) << "5 edges" << endl;
-
 	graphOut.str("");
 	g.depthFirstTraversal("A", graphVisitor);
 	cout << isOK(graphOut.str(), "A B C D E "s)
 		<< "DFS from A" << endl;
-	
+
 	graphOut.str("");
 	g.breadthFirstTraversal("A", graphVisitor);
 	cout << isOK(graphOut.str(), "A B C D E "s)
@@ -220,9 +217,6 @@ void testGraph3()
 	
 	g.add("B", "D", 1);
 	g.add("B", "X", 2);
-
-	cout << isOK(g.getNumVertices(), 6) << "6 vertices" << endl;
-	cout << isOK(g.getNumEdges(), 7) << "7 edges" << endl;
 
 	graphOut.str("");
 	g.depthFirstTraversal("A", graphVisitor);
@@ -241,9 +235,6 @@ void testGraph3()
 		<< "Djisktra" << endl;
 
 	g.removeEdge("A", "B");
-
-	cout << isOK(g.getNumVertices(), 6) << "6 vertices" << endl;
-	cout << isOK(g.getNumEdges(), 6) << "6 edges" << endl;
 
 	graphOut.str("");
 	g.depthFirstTraversal("A", graphVisitor);
